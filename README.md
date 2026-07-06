@@ -1,34 +1,26 @@
-# Tic-Tac-Toe Game (Python)
+# Tic-Tac-Toe
 
-This is a simple **Tic-Tac-Toe** game implemented in Python using a **command-line interface**. The game allows two players to take turns marking spaces in a **3×3 grid** until there is a winner or the board is full.
+A console-based two-player Tic-Tac-Toe game in Python, written as a fundamentals exercise in state management and control flow (no AI opponent — this is human vs. human).
 
----
+## What this covers
+This is a practice project for representing game state with nested data structures and driving a game loop with plain conditionals — no external libraries, no OOP, no classes. It's a good warm-up example for talking through basic algorithmic thinking: input validation, win-condition checking, and loop termination.
 
-## **How to Play**
-- The game starts with an **empty 3x3 grid**.
-- Players take turns to place their marks (`X` or `O`).
-- A player inputs **two digits (XY format)** representing the row and column of their move.
-  - `XY` should be between `11` and `33` (1-based indexing).
-- The game continues until:
-  - **A player wins** (3 marks in a row, column, or diagonal).
-  - **The board is full** (resulting in a draw).
+## Tech Stack
+- Python (standard library only, no dependencies)
 
----
+## Approach
+- Board is a 3x3 list of lists, initialized empty and printed after every move.
+- Players alternate turns starting with `'o'`, entering moves as a two-digit `XY` string (row, column, 1-indexed).
+- `check_xy` validates the input is a legal 2-digit coordinate before allowing a move.
+- `set_room_state` places a mark only if the target cell is empty, otherwise rejects the move and re-prompts.
+- `check_for_win` checks all 3 rows, 3 columns, and both diagonals for three matching marks.
+- Main loop keeps playing while there's an empty cell left and no winner, then reports the winner or a draw.
+- Known rough edge: there's no input-format guard against things like leading zeros or non-numeric input beyond what `int()` parsing catches — good to mention as a "what I'd improve" if asked in an interview (e.g., adding a minimax AI opponent or stricter input handling).
 
-## **Game Rules**
-- The game begins with **Player 'O'** making the first move.
-- Players alternate turns, **switching between 'O' and 'X'**.
-- The board is displayed after every move.
-- **Winning Conditions**:
-  - Three of the same marks in a row.
-  - Three of the same marks in a column.
-  - Three of the same marks in a diagonal.
-- If all spaces are filled and there is no winner, the game ends in a **draw**.
-
----
-
-## **Installation & Running the Game**
-### **1. Clone or Download the Script**
+## Running Locally
 ```bash
-git clone https://github.com/your-username/tic-tac-toe.git
-cd tic-tac-toe
+git clone https://github.com/vinay23is/Tic_Tac_Toe.git
+cd Tic_Tac_Toe
+python tic_tac_toe.py
+```
+Enter moves as two digits, e.g. `11` for row 1, column 1.
